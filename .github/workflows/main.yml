@@ -34,7 +34,7 @@ jobs:
         run: curl ${{ env.URL }}
 
       - name: Selenium Preparation
-        run: docker run --network=isolated -d -p 4444:4444 -p 7900:7900 -v /dev/shm:/dev/shm --name firefox-standalone selenium/standalone-firefox:latest
+        run: docker run --network=isolated -d -p 4444:4444 -p 7900:7900 -v /dev/shm:/dev/shm --name ${{ matrix.browser }}-standalone selenium/standalone-${{ matrix.browser }}:latest
      
       - name: Wait for selenium
         run: sh wait.sh
